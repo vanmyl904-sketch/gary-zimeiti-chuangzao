@@ -28,10 +28,16 @@
 
 每篇口播正文必须为 **300–380 字（含两端）**，包括观众会听到的开头、正文和固定收尾。汉字、英文字母和数字各计一字。标点、空格、换行和 Markdown 标记不计。标题、封面、话题、分镜及证据说明单独放置，不参与计数。
 
-将录制正文单独传入计数命令，改完任何一句后重新核验。补字优先补同题证据或有用信息，删字优先删赘句，保留已经确认的行业收尾。少于 300 字补足，超过 380 字必须删到上限内。提交时标注实际字数。
+将实际要录制的纯文本正文单独传入下方命令，按最终稿计数。命令输出实际字数，只有 300 至 380 字才通过。少于 300 字补同题证据或有用信息，超过 380 字先删赘句，保留已经确认的行业收尾。每次改稿后重新计数，通过后才交付，并在正文之外标注实际字数。
 
 ```bash
-python3 -c 'import sys; print(sum(c.isalnum() for c in sys.stdin.read()))' < spoken-copy.txt
+python3 -c '
+import sys
+
+count = sum(character.isalnum() for character in sys.stdin.read())
+print(count)
+sys.exit(0 if 300 <= count <= 380 else 1)
+' < spoken-copy.txt
 ```
 
 ## 交付
