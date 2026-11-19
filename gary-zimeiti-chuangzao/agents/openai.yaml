@@ -1,0 +1,4 @@
+interface:
+  display_name: "GARY zimeiti chuangzao"
+  short_description: "婚嫁获客对标采集、Obsidian 素材归档与数字人口播创作"
+  default_prompt: "用 $gary-zimeiti-chuangzao 找婚庆公司获客选题，联网核对观点和热评，入库后写一条数字人口播。"
